@@ -183,7 +183,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
     <Content Include="Views\Surveys\Results.cshtml" />
   </ItemGroup>
   <ItemGroup>
