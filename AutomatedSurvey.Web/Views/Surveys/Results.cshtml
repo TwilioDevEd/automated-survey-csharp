@@ -1,0 +1,35 @@
+﻿@using System.Collections
+@using AutomatedSurvey.Web.Models
+
+@model IEnumerable<AutomatedSurvey.Web.Models.Answer>
+
+
+<h2>@ViewBag.SurveyTitle</h2>
+
+@foreach (var uniqueAnswer in (IEnumerable)@ViewBag.UniqueAnswers)
+{
+    <h3>@uniqueAnswer</h3>
+
+    var localUniqueAnswer = uniqueAnswer;
+    foreach (var answer in Model.Where(answer => answer.CallSid.Equals(localUniqueAnswer)))
+    {
+        <p><b>Question:</b> @answer.Question.Body</p>
+        switch (@answer.Question.Type)
+        {
+            case QuestionType.Voice:
+                <p><b>Answer:</b></p>
+                <audio controls>
+                    <source src="@answer.RecordingUrl" type="audio/mpeg">
+                    Your browser does not support the audio tag.
+                </audio>
+                break;
+            case QuestionType.Numeric:
+            <p><b>Answer:</b> @answer.Digits</p>
+                break;
+            case QuestionType.YesNo:
+            <p><b>Answer:</b> @(answer.Digits.Equals("1") ? "Yes" : "No")</p>
+                break;
+        }
+    }
+}
+
