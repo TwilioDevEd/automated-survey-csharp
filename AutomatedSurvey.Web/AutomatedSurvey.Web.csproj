@@ -130,6 +130,10 @@
     <Compile Include="Models\AutomatedSurveyContext.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\QuestionType.cs" />
+    <Compile Include="Models\Repository\AnswersRepository.cs" />
+    <Compile Include="Models\Repository\IRepository.cs" />
+    <Compile Include="Models\Repository\QuestionsRepository.cs" />
+    <Compile Include="Models\Repository\SurveysRepository.cs" />
     <Compile Include="Models\Survey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
