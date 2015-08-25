@@ -56,8 +56,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Domain\QuestionFinderTest.cs" />
     <Compile Include="Domain\ResponseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\InMemoryQuestionsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
