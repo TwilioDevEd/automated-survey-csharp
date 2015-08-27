@@ -28,15 +28,13 @@ namespace AutomatedSurvey.Web.Controllers
 
         [HttpPost]
         public TwiMLResult Create(
-            [Bind(Include = "RecordingUrl,Digits,CallSid,From")]
+            [Bind(Include = "QuestionId,RecordingUrl,Digits,CallSid,From")]
             Answer answer)
         {
             _answersRepository.Create(answer);
 
             var nextQuestion = new QuestionFinder(_questionsRepository).FindNext(answer.QuestionId);
-            var response = new Response(nextQuestion).Build();
-
-            return TwiML(nextQuestion != null ? response : ExitResponse);
+            return TwiML(nextQuestion != null ? new Response(nextQuestion).Build() : ExitResponse);
         }
 
         private static TwilioResponse ExitResponse
