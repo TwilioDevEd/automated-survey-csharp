@@ -9,14 +9,12 @@
 .wrapper {
   height:100%;
   width:100%;
-}</style><link rel="shortcut icon" href="//twilio.com/bundles/marketing/img/favicons/favicon.ico"><link rel="apple-touch-icon" href="//twilio.com/bundles/marketing/img/favicons/favicon_57.png"><link rel="apple-touch-icon" sizes="72x72" href="//twilio.com/bundles/marketing/img/favicons/favicon_72.png"><link rel="apple-touch-icon" sizes="114x114" href="//twilio.com/bundles/marketing/img/favicons/favicon_114.png"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"><link rel="stylesheet" href="viewsaurus.css"></head><body><div class="wrapper"><div id="viewsaurus" data-title="Automated Surveys with ASP.NET MVC"><div class="saurus-panes"><div class="saurus-prose"><div class="saurus-prose-header"><div class="title-outer"><span class="step-title">Automated Surveys with ASP.NET MVC</span></div></div><div class="saurus-nav-buttons"><div class="saurus-nav-button nav-overview"><div class="saurus-nav-button-inner"><i class="fa fa-fw fa-list"></i></div><div class="nav-divider"></div></div><div class="saurus-nav-button nav-previous"><div class="saurus-nav-button-inner"><a href=""> <i class="fa fa-fw fa-play fa-rotate-180"></i></a></div><div class="nav-divider"></div></div><div class="saurus-nav-button nav-next clickable"><div class="saurus-nav-button-inner"><a href="#1"> <i class="fa fa-fw fa-play"></i></a></div></div><div class="saurus-next-title"><span class="next-title-inner"></span></div></div><div class="saurus-progress-bar"></div><div class="saurus-start"><p>Learn how to leverage the Twilio API and TwiML to conduct automated phone surveys.</p><a href="#0">Start Tutorial</a></div><div class="saurus-content"><div data-title="Automated surveys with Twilio and ASP.NET MVC" class="chapter"><div data-file="AutomatedSurvey.Web/Models/Survey.cs" data-highlight="9-17" class="step"><h3 id="about-this-application">About this application</h3>
+}</style><link rel="shortcut icon" href="//twilio.com/bundles/marketing/img/favicons/favicon.ico"><link rel="apple-touch-icon" href="//twilio.com/bundles/marketing/img/favicons/favicon_57.png"><link rel="apple-touch-icon" sizes="72x72" href="//twilio.com/bundles/marketing/img/favicons/favicon_72.png"><link rel="apple-touch-icon" sizes="114x114" href="//twilio.com/bundles/marketing/img/favicons/favicon_114.png"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"><link rel="stylesheet" href="viewsaurus.css"></head><body><div class="wrapper"><div id="viewsaurus" data-title="Automated Surveys with ASP.NET MVC"><div class="saurus-panes"><div class="saurus-prose"><div class="saurus-prose-header"><div class="title-outer"><span class="step-title">Automated Surveys with ASP.NET MVC</span></div></div><div class="saurus-nav-buttons"><div class="saurus-nav-button nav-overview"><div class="saurus-nav-button-inner"><i class="fa fa-fw fa-list"></i></div><div class="nav-divider"></div></div><div class="saurus-nav-button nav-previous"><div class="saurus-nav-button-inner"><a href=""> <i class="fa fa-fw fa-play fa-rotate-180"></i></a></div><div class="nav-divider"></div></div><div class="saurus-nav-button nav-next clickable"><div class="saurus-nav-button-inner"><a href="#1"> <i class="fa fa-fw fa-play"></i></a></div></div><div class="saurus-next-title"><span class="next-title-inner"></span></div></div><div class="saurus-progress-bar"></div><div class="saurus-start"><p>Learn how to leverage the Twilio API and TwiML to conduct automated phone surveys.</p><a href="#0">Start Tutorial</a></div><div class="saurus-content"><div data-title="Automated surveys with Twilio and ASP.NET MVC" class="chapter"><div data-file="AutomatedSurvey.Web/Models/Survey.cs" class="step"><h2 id="about-this-application">About this application</h2>
 <p>This <a href="http://www.asp.net/mvc">ASP.NET MVC</a> sample application demonstrates
-using Twilio and <a href="https://www.twilio.com/docs/api/twiml">TwiML</a> to deliver a survey that can be completed via voice call.
-The survey actually works via SMS text messages, too, but we&#39;re going to
-focus on the looping logic necessary to conduct an interview over the
-phone.</p>
-<p>In this tutorial, we&#39;ll highlight the code that interacts with Twilio
-and in turn makes the application tick. To run this sample app yourself,
+using Twilio and <a href="https://www.twilio.com/docs/api/twiml">TwiML</a> to deliver 
+a survey that can be completed via voice call.</p>
+<p>In this tutorial, we&#39;ll highlight the code necessary to power a automated 
+survey. To run this sample app yourself,
 <a href="https://github.com/TwilioDevEd/automated-survey-csharp">download the code and follow the instructions on
 GitHub</a>.</p>
 <p>Let&#39;s get started! Click the right arrow above to move to the next step
@@ -31,14 +29,12 @@ of the tutorial.</p>
 <li><a href="https://www.nuget.org/packages/Twilio.TwiML/">Twilio.TwiML</a></li>
 <li><a href="https://www.nuget.org/packages/Twilio.Mvc/">Twilio.Mvc</a></li>
 </ul>
-</div><div class="step"><h3 id="configure-the-application">Configure the application</h3>
-<p>The steps to configure the application are detailed <a href="https://github.com/TwilioDevEd/automated-survey-csharp#running-locally">here</a>.</p>
-</div><div class="step"><h3 id="configure-twilio-number">Configure Twilio Number</h3>
+</div><div class="step"><h2 id="configure-twilio-number">Configure Twilio Number</h2>
 <p>In order to receive incoming calls we need to first configure our <a href="https://www.twilio.com/user/account/phone-numbers/incoming">Twilio phone number</a>.
 <img src="https://raw.github.com/TwilioDevEd/automated-survey-csharp/master/configure-twilio-phone.png" alt="Configure Twilio Phone"></p>
 <p>Click on the red number, and then set the Voice Request URL. Don’t forget to save the changes.
 <img src="https://raw.github.com/TwilioDevEd/automated-survey-csharp/master/set-voice-request-url.png" alt="Set Voice Request URL"></p>
-</div><div data-file="AutomatedSurvey.Web/Migrations/Configuration.cs" data-highlight="13-49" class="step"><h3 id="create-a-survey">Create a Survey</h3>
+</div><div data-file="AutomatedSurvey.Web/Migrations/Configuration.cs" data-highlight="13-49" class="step"><h2 id="create-a-survey">Create a Survey</h2>
 <p>The questions are created using the <code>Configuration.Seed</code> method.
 The advantage of this approach is that the data is populated when you run <code>Update-Database</code>.</p>
 <hr>
@@ -46,9 +42,15 @@ The advantage of this approach is that the data is populated when you run <code>
 <ul>
 <li><a href="http://www.asp.net/web-api/overview/data/using-web-api-with-entity-framework/part-3">Use Code First Migrations to Seed the Database</a></li>
 </ul>
-</div><div data-file="AutomatedSurvey.Web/Controllers/SurveysController.cs" data-highlight="24-26" class="step"><h3 id="respond-to-twilio-s-initial-request">Respond to Twilio’s initial request</h3>
-<p>Whenever one of your <a href="https://www.twilio.com/user/account/phone-numbers/incoming">Twilio phone numbers</a> receives a call, Twillo will make an HTTP request to the voice request URL configured under it with the HTTP method specified (either GET or POST).</p>
-<p>For this application Twilio should be configured to make a GET request to the application’s <code>surveys/connectcall</code> endpoint. Here the application will find the last created survey, and after stating its name and welcoming to the user to it using TwiML’s <a href="https://www.twilio.com/docs/api/twiml/say"><code>&lt;Say&gt;</code></a> verb, it will redirect the call to the first question using the <a href="https://www.twilio.com/docs/api/twiml/redirect"><code>&lt;Redirect&gt;</code></a> verb.</p>
+</div><div data-file="AutomatedSurvey.Web/Controllers/SurveysController.cs" data-highlight="24-36" class="step"><h2 id="respond-to-twilio-s-initial-request">Respond to Twilio’s initial request</h2>
+<p>Whenever one of your <a href="https://www.twilio.com/user/account/phone-numbers/incoming">Twilio phone numbers</a> 
+receives a call, Twillo will make an HTTP request to the voice request URL 
+configured under it with the HTTP method specified (either GET or POST).</p>
+<p>For this application Twilio should be configured to make a GET request to 
+the application’s <code>surveys/connectcall</code> endpoint. Here the application will 
+find the last created survey, use <a href="https://www.twilio.com/docs/api/twiml/say"><code>&lt;Say&gt;</code></a> 
+to speak  welcome message, and <a href="https://www.twilio.com/docs/api/twiml/redirect"><code>&lt;Redirect&gt;</code></a> 
+to the first question in the survey.</p>
 <hr>
 <p><strong>See Also</strong></p>
 <ul>
@@ -56,44 +58,62 @@ The advantage of this approach is that the data is populated when you run <code>
 <li><a href="Your Response https://www.twilio.com/docs/api/twiml/your_response">Twilio Voice</a></li>
 <li><a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP Methods</a></li>
 </ul>
-</div><div data-file="AutomatedSurvey.Web/Domain/Response.cs" data-highlight="29-41" class="step"><h3 id="ask-the-caller-a-question">Ask the caller a question</h3>
-<p>At this point the Twilio client has made a request for the first question. We’re using the <a href="https://github.com/twilio/twilio-csharp">twilio-csharp</a> library to generate a TwiML response.</p>
-<p>The process goes as follows:</p>
-<ol>
-<li>Ask a question.</li>
-<li>Say the instructions on how to answer that questions.</li>
-<li>Record the caller’s answer to the question.</li>
-</ol>
-<p>Bear in mind that the instructions on how to answer a question depend on the type of question we ask. The strategy to record an answer depends on the given question, it could require either keypad input or voice input.</p>
+</div><div data-file="AutomatedSurvey.Web/Domain/Response.cs" data-highlight="29-41" class="step"><h2 id="ask-the-caller-a-question">Ask the caller a question</h2>
+<p>At this point, Twilio has made a request for the first question. 
+We’re using the <a href="https://github.com/twilio/twilio-csharp">twilio-csharp</a> 
+library to generate a TwiML response.</p>
+<p>After using <a href="https://www.twilio.com/docs/api/twiml/say"><code>&lt;Say&gt;</code></a> to ask 
+the user a question, we use either <a href="https://www.twilio.com/docs/api/twiml/gather"><code>&lt;Gather&gt;</code></a> 
+or <a href="https://www.twilio.com/docs/api/twiml/record"><code>&lt;Record&gt;</code></a> to collect
+an answer, depending on what type of question is being asked.</p>
 <hr>
 <p><strong>See Also</strong></p>
 <ul>
 <li><a href="https://www.nuget.org/packages/Twilio.TwiML/">Twilio.TwiML</a></li>
 <li><a href="https://www.nuget.org/packages/Twilio.Mvc/">Twilio.Mvc</a></li>
 </ul>
-</div><div data-file="AutomatedSurvey.Web/Controllers/AnswersController.cs" data-highlight="29-40" class="step"><h3 id="record-the-caller-s-response">Record the caller’s response</h3>
-<p>If the question is of type <code>QuestionType.Voice</code>, then we use <a href="https://www.twilio.com/docs/api/twiml/record"><code>&lt;Record&gt;</code></a> verb, otherwise we use the <a href="https://www.twilio.com/docs/api/twiml/gather"><code>Gather</code></a> verb. Both verbs take an <code>action</code> attribute and a <code>method</code> attribute. Twilio’s client will use both attributes to make a request to our route that will store the caller’s answer to the question.</p>
-<p>Since we want to create a new resource in our server we’ll use the <code>POST</code> method. For convenience, the <code>action</code> url will be <code>answers/create</code>.</p>
-</div><div data-file="AutomatedSurvey.Web/Controllers/AnswersController.cs" data-highlight="31" class="step"><h3 id="store-an-answer">Store an answer</h3>
+</div><div data-file="AutomatedSurvey.Web/Domain/Response.cs" data-highlight="43-56" class="step"><h2 id="ask-different-types-of-questions">Ask different types of questions</h2>
+<p>If we want a number or boolean response from the user, we use the 
+<a href="https://www.twilio.com/docs/api/twiml/gather"><code>&lt;Gather&gt;</code></a> verb.
+For a free text response, we use <a href="https://www.twilio.com/docs/api/twiml/record"><code>&lt;Record&gt;</code></a> 
+to collect an answer.</p>
+<p>Both TwiML tags have an <code>action</code> attribute and a <code>method</code> attribute. Twilio 
+will use both attributes to make another HTTP request to our application 
+with the user&#39;s answer.</p>
+<p>Since we want to create a new resource on the server, we’ll use the <code>POST</code> 
+method. The <code>action</code> url will be <code>answers/create</code>.</p>
+<hr>
+<p><strong>See Also</strong></p>
+<ul>
+<li><a href="https://www.nuget.org/packages/Twilio.TwiML/">Twilio.TwiML</a></li>
+<li><a href="https://www.nuget.org/packages/Twilio.Mvc/">Twilio.Mvc</a></li>
+</ul>
+</div><div data-file="AutomatedSurvey.Web/Controllers/AnswersController.cs" data-highlight="29-38" class="step"><h2 id="record-the-caller-s-response">Record the caller’s response</h2>
 <p>When the caller has finished entering her response, Twilio will make a request to
-this controller including all the <a href="https://www.twilio.com/docs/api/twiml/twilio_request">call parameters</a> we will need
-. For this sample application we will store the
-<code>RecordingUrl</code> or <code>Digits</code> parameter for voice and
-yes-no/numeric answers accordingly. For this sample we will also
-save the <code>CallSid</code> so we can uniquely identify a call.</p>
+this controller including all the <a href="https://www.twilio.com/docs/api/twiml/twilio_request">call parameters</a> 
+we will need. For this sample application we will store either the
+<code>RecordingUrl</code> for free-answer responses, or parse <code>Digits</code> for number or
+boolean responses. We&#39;ll also track the <code>CallSid</code> so we can track answers
+for a specific survey response.</p>
 <p>Most surveys include more than a single question so we must now
-redirect the user to the next question in this survey.</p>
-</div><div data-file="AutomatedSurvey.Web/Controllers/SurveysController.cs" data-highlight="38-49" class="step"><h3 id="display-the-survey-results">Display the survey results</h3>
-<p>For this route we simply query the database and display the information using a <a href="http://www.asp.net/web-pages/overview/getting-started/introducing-razor-syntax-(c">Razor template</a>).</p>
-<p>You can access this page in the application through <code>surveys/results</code>.</p>
-</div><div class="step"><h3 id="what-s-next">What’s next</h3>
-<p>As you saw, build an application using Twilio numbers was a very straightforward. We hope you find this sample application useful. If you’re a C# developer working with Twilio, you might enjoy these other tutorials.</p>
+redirect the user to the next question in this survey. This process will 
+repeat until we are done collecting results of the survey.</p>
+</div><div data-file="AutomatedSurvey.Web/Controllers/SurveysController.cs" data-highlight="38-49" class="step"><h2 id="display-the-survey-results">Display the survey results</h2>
+<p>For this route we simply query the database and display the information 
+using a <a href="http://www.asp.net/web-pages/overview/getting-started/">Razor template</a>.</p>
+<p>You can access this page in the application at <code>/surveys/results</code>.</p>
+</div><div class="step"><h2 id="what-s-next-">What’s next?</h2>
+<p>As you saw, build an application using Twilio numbers was a very 
+straightforward. We hope you find this sample application useful. 
+If you’re a C# developer working with Twilio, you might enjoy these other 
+tutorials.</p>
 <ul>
 <li><a href="https://www.twilio.com/docs/howto/walkthrough/two-factor-authentication/csharp/mvc">Two-Factor Authentication with Authy</a></li>
-<li><a href="https://www.twilio.com/docs/howto/walkthrough/appointment-reminders/csharp/mvc">Apointment Reminders</a></li>
+<li><a href="https://www.twilio.com/docs/howto/walkthrough/appointment-reminders/csharp/mvc">Appointment Reminders</a></li>
 </ul>
-</div><div class="step"><h3 id="did-this-help-">Did this help?</h3>
-<p>If you have any feedback to share with us, we&#39;d love to hear it. Tweet <a href="https://twitter.com/twilio">@twilio</a> to let us know what you think.</p>
+<h4 id="did-this-help-">Did this help?</h4>
+<p>If you have any feedback to share with us, we&#39;d love to hear it. 
+Tweet <a href="https://twitter.com/twilio">@twilio</a> to let us know what you think.</p>
 </div></div>
 <div class="saurus-files" style="display:none;"><textarea class="saurus-file" data-file="AutomatedSurvey.Web/Models/Survey.cs" data-mode="csharp">77u/dXNpbmcgU3lzdGVtOwp1c2luZyBTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYzsKdXNpbmcgU3lzdGVtLkNvbXBvbmVudE1vZGVsLkRhdGFBbm5vdGF0aW9uczsKdXNpbmcgU3lzdGVtLkxpbnE7CnVzaW5nIFN5c3RlbS5XZWI7CgpuYW1lc3BhY2UgQXV0b21hdGVkU3VydmV5LldlYi5Nb2RlbHMKewogICAgcHVibGljIGNsYXNzIFN1cnZleQogICAgewogICAgICAgIHB1YmxpYyBpbnQgSWQgeyBnZXQ7IHNldDsgfQogICAgICAgIFtSZXF1aXJlZF0KICAgICAgICBwdWJsaWMgc3RyaW5nIFRpdGxlIHsgZ2V0OyBzZXQ7IH0KICAgICAgICBbVGltZXN0YW1wXQogICAgICAgIHB1YmxpYyBieXRlW10gVGltZXN0YW1wIHsgZ2V0OyBzZXQ7IH0KICAgICAgICBwdWJsaWMgdmlydHVhbCBJTGlzdDxRdWVzdGlvbj4gUXVlc3Rpb25zIHsgZ2V0OyBzZXQ7IH0KICAgIH0KfQ==</textarea>
 <textarea class="saurus-file" data-file="AutomatedSurvey.Web/Migrations/Configuration.cs" data-mode="csharp">dXNpbmcgU3lzdGVtLkRhdGEuRW50aXR5Lk1pZ3JhdGlvbnM7CnVzaW5nIEF1dG9tYXRlZFN1cnZleS5XZWIuTW9kZWxzOwoKbmFtZXNwYWNlIEF1dG9tYXRlZFN1cnZleS5XZWIuTWlncmF0aW9ucwp7CiAgICBpbnRlcm5hbCBzZWFsZWQgY2xhc3MgQ29uZmlndXJhdGlvbiA6IERiTWlncmF0aW9uc0NvbmZpZ3VyYXRpb248QXV0b21hdGVkU3VydmV5c0NvbnRleHQ+CiAgICB7CiAgICAgICAgcHVibGljIENvbmZpZ3VyYXRpb24oKQogICAgICAgIHsKICAgICAgICAgICAgQXV0b21hdGljTWlncmF0aW9uc0VuYWJsZWQgPSBmYWxzZTsKICAgICAgICB9CgogICAgICAgIHByb3RlY3RlZCBvdmVycmlkZSB2b2lkIFNlZWQoQXV0b21hdGVkU3VydmV5c0NvbnRleHQgY29udGV4dCkKICAgICAgICB7CiAgICAgICAgICAgIGNvbnRleHQuU3VydmV5cy5BZGRPclVwZGF0ZSgKICAgICAgICAgICAgICAgIHN1cnZleSA9PiBuZXcgeyBzdXJ2ZXkuSWQsIHN1cnZleS5UaXRsZSB9LAogICAgICAgICAgICAgICAgbmV3IFN1cnZleSB7IElkID0gMSwgVGl0bGUgPSAiVHdpbGlvIiB9KTsKCiAgICAgICAgICAgIGNvbnRleHQuU2F2ZUNoYW5nZXMoKTsKCiAgICAgICAgICAgIGNvbnRleHQuUXVlc3Rpb25zLkFkZE9yVXBkYXRlKAogICAgICAgICAgICAgICAgcXVlc3Rpb24gPT4gbmV3IHsgcXVlc3Rpb24uQm9keSwgcXVlc3Rpb24uVHlwZSwgcXVlc3Rpb24uU3VydmV5SWQgfSwKICAgICAgICAgICAgICAgIG5ldyBRdWVzdGlvbgogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgIEJvZHkgPSAiSGVsbG8uIFRoYW5rcyBmb3IgdGFraW5nIHRoZSBUd2lsaW8gRGV2ZWxvcGVyIEVkdWNhdGlvbiBzdXJ2ZXkuIE9uIGEgc2NhbGUgb2YgMCB0byA5IGhvdyB3b3VsZCB5b3UgcmF0ZSB0aGlzIHR1dG9yaWFsPyIsCiAgICAgICAgICAgICAgICAgICAgVHlwZSA9IFF1ZXN0aW9uVHlwZS5OdW1lcmljLAogICAgICAgICAgICAgICAgICAgIFN1cnZleUlkID0gMQogICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgIG5ldyBRdWVzdGlvbgogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgIEJvZHkgPSAiT24gYSBzY2FsZSBvZiAwIHRvIDkgaG93IHdvdWxkIHlvdSByYXRlIHRoZSBkZXNpZ24gb2YgdGhpcyB0dXRvcmlhbD8iLAogICAgICAgICAgICAgICAgICAgIFR5cGUgPSBRdWVzdGlvblR5cGUuTnVtZXJpYywKICAgICAgICAgICAgICAgICAgICBTdXJ2ZXlJZCA9IDEKICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICBuZXcgUXVlc3Rpb24KICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBCb2R5ID0gIkluIHlvdXIgb3duIHdvcmRzIHBsZWFzZSBkZXNjcmliZSB5b3VyIGZlZWxpbmdzIGFib3V0IFR3aWxpbyByaWdodCBub3c/IFByZXNzIHRoZSBwb3VuZCBzaWduIHdoZW4geW91IGFyZSBmaW5pc2hlZC4iLAogICAgICAgICAgICAgICAgICAgIFR5cGUgPSBRdWVzdGlvblR5cGUuVm9pY2UsCiAgICAgICAgICAgICAgICAgICAgU3VydmV5SWQgPSAxCiAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgbmV3IFF1ZXN0aW9uCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgQm9keSA9ICJEbyB5b3UgbGlrZSBteSB2b2ljZT8gUGxlYXNlIGJlIGhvbmVzdCwgSSBkaXNsaWtlIGxpYXJzLiIsCiAgICAgICAgICAgICAgICAgICAgVHlwZSA9IFF1ZXN0aW9uVHlwZS5ZZXNObywKICAgICAgICAgICAgICAgICAgICBTdXJ2ZXlJZCA9IDEKICAgICAgICAgICAgICAgIH0pOwoKICAgICAgICAgICAgY29udGV4dC5TYXZlQ2hhbmdlcygpOwogICAgICAgIH0KICAgIH0KfQo=</textarea>
