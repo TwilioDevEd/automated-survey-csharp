@@ -1,7 +1,6 @@
-[![Build
-status](https://ci.appveyor.com/api/projects/status/6by444f1kiemb7ox/branch/master?svg=true)](https://ci.appveyor.com/project/acamino/automated-survey-csharp/branch/master)
-
 # Automated Surveys using ASP.NET MVC
+
+[![Build status](https://ci.appveyor.com/api/projects/status/7bxv1xa7f6pu3wui?svg=true)](https://ci.appveyor.com/project/TwilioDevEd/automated-survey-csharp)
 
 This application demonstrates how to use Twilio and TwiML to perform automated phone surveys.
 
