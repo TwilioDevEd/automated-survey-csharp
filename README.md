@@ -4,6 +4,8 @@
 
 This application demonstrates how to use Twilio and TwiML to perform automated phone surveys.
 
+[Read the full tutorial here](https://www.twilio.com/docs/tutorials/walkthrough/automated-survey/csharp/mvc)!
+
 ## Running locally
 
 The application requirements are minimal, if you have installed [Visual Studio](https://www.visualstudio.com/) you're almost done.
