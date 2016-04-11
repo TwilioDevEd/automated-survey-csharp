@@ -136,6 +136,7 @@
     <Compile Include="Domain\QuestionFinder.cs" />
     <Compile Include="Domain\Response.cs" />
     <Compile Include="Domain\SMS\ResponseCreator.cs" />
+    <Compile Include="Domain\SMS\TrackedQuestion.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
