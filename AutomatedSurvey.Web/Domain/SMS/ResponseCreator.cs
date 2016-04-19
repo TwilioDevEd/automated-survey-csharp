@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using AutomatedSurvey.Web.Models;
 using Twilio.TwiML;
 
@@ -7,18 +6,11 @@ namespace AutomatedSurvey.Web.Domain.SMS
 {
     public interface IResponseCreator
     {
-        TwilioResponse Create();
+        TwilioResponse Create(Question question);
     }
 
     public class ResponseCreator : IResponseCreator
     {
-        private readonly Question _question;
-
-        public ResponseCreator(Question question)
-        {
-            _question = question;
-        }
-
         public static IDictionary<QuestionType, string> Instructions
         {
             get
@@ -32,22 +24,22 @@ namespace AutomatedSurvey.Web.Domain.SMS
             }
         }
 
-        public TwilioResponse Create()
+        public TwilioResponse Create(Question question)
         {
-            if (_question == null)
+            if (question == null)
             {
                 return ExitMessage();
             }
 
             var response = new TwilioResponse();
-            response.Message(MessageBody());
+            response.Message(MessageBody(question));
 
             return response;
         }
 
-        private string MessageBody()
+        private static string MessageBody(Question question)
         {
-            return string.Format("{0}\n\n{1}", _question.Body, Instructions[_question.Type]);
+            return string.Format("{0}\n\n{1}", question.Body, Instructions[question.Type]);
         }
 
         private static TwilioResponse ExitMessage()

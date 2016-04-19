@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using AutomatedSurvey.Web.Domain.SMS;
 using AutomatedSurvey.Web.Models;
 using AutomatedSurvey.Web.Models.Repository;
 using Twilio.TwiML;
@@ -33,6 +34,18 @@ namespace AutomatedSurvey.Web.Controllers
             response.Redirect(Url.Action("find", "questions", new { id = 1 }));
 
             return TwiML(response);
+        }
+
+        [HttpPost]
+        public ActionResult Sms()
+        {
+            var replyProcessor = new ReplyProcessor(
+                ControllerContext,
+                new ResponseCreator(),
+                _surveysRepository,
+                new QuestionsRepository());
+
+            return TwiML(replyProcessor.Process());
         }
 
         // GET: surveys/results

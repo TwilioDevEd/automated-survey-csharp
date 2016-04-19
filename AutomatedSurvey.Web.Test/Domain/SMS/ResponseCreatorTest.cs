@@ -14,8 +14,8 @@ namespace AutomatedSurvey.Web.Test.Domain.SMS
         {
             Question question = null;
 
-            var responseCreator = new ResponseCreator(null);
-            var response = responseCreator.Create();
+            var responseCreator = new ResponseCreator();
+            var response = responseCreator.Create(null);
 
             var data = response.ToXDocument();
             Assert.That(
@@ -31,8 +31,8 @@ namespace AutomatedSurvey.Web.Test.Domain.SMS
         {
             var question = new Question {Type = questionType, Body = questionBody};
 
-            var responseCreator = new ResponseCreator(question);
-            var response = responseCreator.Create();
+            var responseCreator = new ResponseCreator();
+            var response = responseCreator.Create(question);
 
             var data = response.ToXDocument();
             StringAssert.Contains(
@@ -47,8 +47,8 @@ namespace AutomatedSurvey.Web.Test.Domain.SMS
         {
             var question = new Question {Type = questionType};
 
-            var responseCreator = new ResponseCreator(question);
-            var response = responseCreator.Create();
+            var responseCreator = new ResponseCreator();
+            var response = responseCreator.Create(question);
 
             var data = response.ToXDocument();
             StringAssert.Contains(

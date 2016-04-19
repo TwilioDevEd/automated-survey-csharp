@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
 using AutomatedSurvey.Web.Models;
 
 namespace AutomatedSurvey.Web.Domain.SMS
@@ -19,7 +18,7 @@ namespace AutomatedSurvey.Web.Domain.SMS
 
     public class TrackedQuestion : ITrackedQuestion
     {
-        private const string CookieName = "Question";
+        private const string CookieName = "TRACKED_QUESTION";
 
         private readonly ControllerContext _controllerContext;
 
@@ -39,7 +38,7 @@ namespace AutomatedSurvey.Web.Domain.SMS
             {
                 var cookie = new HttpCookie(CookieName)
                 {
-                    Value = Serialize(question)
+                    Value = question.Id.ToString()
                 };
 
                 _controllerContext.HttpContext.Response.Cookies.Add(cookie);
@@ -48,8 +47,10 @@ namespace AutomatedSurvey.Web.Domain.SMS
 
         public Question Fetch()
         {
-            var cookie = Cookie;
-            return Deserialize(cookie.Value);
+            return new Question
+            {
+                Id = Convert.ToInt32(Cookie.Value)
+            };
         }
 
         public bool IsEmpty()
@@ -65,16 +66,6 @@ namespace AutomatedSurvey.Web.Domain.SMS
         private HttpCookie Cookie
         {
             get { return _controllerContext.HttpContext.Request.Cookies[CookieName]; }
-        }
-
-        private static string Serialize(Question question)
-        {
-            return new JavaScriptSerializer().Serialize(question);
-        }
-
-        private static Question Deserialize(string serializedQuestion)
-        {
-            return new JavaScriptSerializer().Deserialize<Question>(serializedQuestion);
         }
     }
 }
