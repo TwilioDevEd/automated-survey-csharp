@@ -3,11 +3,10 @@ using AutomatedSurvey.Web.Domain;
 using AutomatedSurvey.Web.Models;
 using AutomatedSurvey.Web.Models.Repository;
 using Twilio.TwiML;
-using Twilio.TwiML.Mvc;
 
 namespace AutomatedSurvey.Web.Controllers
 {
-    public class AnswersController : TwilioController
+    public class AnswersController : Controller
     {
         private readonly IRepository<Question> _questionsRepository;
         private readonly IRepository<Answer> _answersRepository;
@@ -27,21 +26,23 @@ namespace AutomatedSurvey.Web.Controllers
         }
 
         [HttpPost]
-        public TwiMLResult Create(
+        public ActionResult Create(
             [Bind(Include = "QuestionId,RecordingUrl,Digits,CallSid,From")]
             Answer answer)
         {
             _answersRepository.Create(answer);
 
             var nextQuestion = new QuestionFinder(_questionsRepository).FindNext(answer.QuestionId);
-            return TwiML(nextQuestion != null ? new Response(nextQuestion).Build() : ExitResponse);
+            var response = (nextQuestion != null ? new Response(nextQuestion).Build() : ExitResponse);
+
+            return Content(response.ToString(), "application/xml");
         }
 
-        private static TwilioResponse ExitResponse
+        private static VoiceResponse ExitResponse
         {
             get
             {
-                var response = new TwilioResponse();
+                var response = new VoiceResponse();
                 response.Say("Thanks for your time. Good bye");
                 response.Hangup();
                 return response;
