@@ -1,3 +1,7 @@
+<a href="https://www.twilio.com">
+  <img src="https://static0.twilio.com/marketing/bundles/marketing/img/logos/wordmark-red.svg" alt="Twilio" width="250" />
+</a>
+
 # Automated Surveys using ASP.NET MVC
 
 [![Build status](https://ci.appveyor.com/api/projects/status/7bxv1xa7f6pu3wui?svg=true)](https://ci.appveyor.com/project/TwilioDevEd/automated-survey-csharp)
