@@ -17,6 +17,7 @@ namespace AutomatedSurvey.Web.Test.Domain
             };
             var response = new Response(question).Build();
             var expectedResponse = string.Format(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n" +
                 "<Response>\r\n" +
                 "  <Say>{0}</Say>\r\n" +
                 "  <Say>{1}</Say>\r\n" +
@@ -34,6 +35,7 @@ namespace AutomatedSurvey.Web.Test.Domain
             var question = new Question { Id = id, Body = body, Type = type };
             var response = new Response(question).Build();
             var expectedResponse = string.Format(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n" +
                 "<Response>\r\n" +
                 "  <Say>{0}</Say>\r\n" +
                 "  <Say>{1}</Say>\r\n" +
