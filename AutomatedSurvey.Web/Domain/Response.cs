@@ -29,10 +29,10 @@ namespace AutomatedSurvey.Web.Domain
         /// <summary>
         /// Builds an instance.
         /// </summary>
-        /// <returns>A new instance of the TwilioResponse</returns>
-        public TwilioResponse Build()
+        /// <returns>A new instance of the VoiceResponse</returns>
+        public VoiceResponse Build()
         {
-            var response = new TwilioResponse();
+            var response = new VoiceResponse();
             response.Say(_question.Body);
             response.Say(QuestionTypeToMessage[_question.Type]);
             AddRecordOrGatherCommands(response);
@@ -40,17 +40,17 @@ namespace AutomatedSurvey.Web.Domain
             return response;
         }
 
-        private void AddRecordOrGatherCommands(TwilioResponse response)
+        private void AddRecordOrGatherCommands(VoiceResponse response)
         {
             var questionType = _question.Type;
             switch (questionType)
             {
                 case QuestionType.Voice:
-                    response.Record(new { action = GenerateUrl(_question) });
+                    response.Record(action: GenerateUrl(_question));
                     break;
                 case QuestionType.Numeric:
                 case QuestionType.YesNo:
-                    response.Gather(new { action = GenerateUrl(_question) });
+                    response.Gather(action: GenerateUrl(_question));
                     break;
             }
         }

@@ -3,11 +3,10 @@ using System.Web.Mvc;
 using AutomatedSurvey.Web.Models;
 using AutomatedSurvey.Web.Models.Repository;
 using Twilio.TwiML;
-using Twilio.TwiML.Mvc;
 
 namespace AutomatedSurvey.Web.Controllers
 {
-    public class SurveysController : TwilioController
+    public class SurveysController : Controller
     {
         private readonly IRepository<Survey> _surveysRepository;
         private readonly IRepository<Answer> _answersRepository;
@@ -25,14 +24,14 @@ namespace AutomatedSurvey.Web.Controllers
         // GET: connectcall
         public ActionResult ConnectCall()
         {
-            var response = new TwilioResponse();
+            var response = new VoiceResponse();
             var survey = _surveysRepository.FirstOrDefault();
             var welcomeMessage = string.Format("Thank you for taking the {0} survey", survey.Title);
 
             response.Say(welcomeMessage);
             response.Redirect(Url.Action("find", "questions", new { id = 1 }));
 
-            return TwiML(response);
+            return Content(response.ToString(), "application/xml");
         }
 
         // GET: surveys/results
