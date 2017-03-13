@@ -2,11 +2,12 @@
 using AutomatedSurvey.Web.Domain;
 using AutomatedSurvey.Web.Models;
 using AutomatedSurvey.Web.Models.Repository;
+using Twilio.AspNet.Mvc;
 using Twilio.TwiML;
 
 namespace AutomatedSurvey.Web.Controllers
 {
-    public class AnswersController : Controller
+    public class AnswersController : TwilioController
     {
         private readonly IRepository<Question> _questionsRepository;
         private readonly IRepository<Answer> _answersRepository;
@@ -35,7 +36,7 @@ namespace AutomatedSurvey.Web.Controllers
             var nextQuestion = new QuestionFinder(_questionsRepository).FindNext(answer.QuestionId);
             var response = (nextQuestion != null ? new Response(nextQuestion).Build() : ExitResponse);
 
-            return Content(response.ToString(), "application/xml");
+            return TwiML(response);
         }
 
         private static VoiceResponse ExitResponse
