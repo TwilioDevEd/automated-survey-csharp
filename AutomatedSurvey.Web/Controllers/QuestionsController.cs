@@ -2,10 +2,11 @@
 using AutomatedSurvey.Web.Domain;
 using AutomatedSurvey.Web.Models;
 using AutomatedSurvey.Web.Models.Repository;
+using Twilio.AspNet.Mvc;
 
 namespace AutomatedSurvey.Web.Controllers
 {
-    public class QuestionsController : Controller
+    public class QuestionsController : TwilioController
     {
         private readonly IRepository<Question> _questionsRepository;
 
@@ -27,7 +28,7 @@ namespace AutomatedSurvey.Web.Controllers
             }
 
             var response = new Response(question).Build();
-            return Content(response.ToString(), "application/xml");
+            return TwiML(response);
         }
     }
 }

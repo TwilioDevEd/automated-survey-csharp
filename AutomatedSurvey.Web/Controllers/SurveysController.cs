@@ -2,11 +2,12 @@
 using System.Web.Mvc;
 using AutomatedSurvey.Web.Models;
 using AutomatedSurvey.Web.Models.Repository;
+using Twilio.AspNet.Mvc;
 using Twilio.TwiML;
 
 namespace AutomatedSurvey.Web.Controllers
 {
-    public class SurveysController : Controller
+    public class SurveysController : TwilioController
     {
         private readonly IRepository<Survey> _surveysRepository;
         private readonly IRepository<Answer> _answersRepository;
@@ -31,7 +32,7 @@ namespace AutomatedSurvey.Web.Controllers
             response.Say(welcomeMessage);
             response.Redirect(Url.Action("find", "questions", new { id = 1 }));
 
-            return Content(response.ToString(), "application/xml");
+            return TwiML(response);
         }
 
         // GET: surveys/results
