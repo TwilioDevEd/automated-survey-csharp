@@ -27,4 +27,4 @@ jobs:
       run: msbuild AutomatedSurvey.sln /verbosity:minimal
 
     - name: Run Tests with NUnit Console
-      run: .\packages\NUnit.ConsoleRunner.3.11.1\tools\nunit3-console AutomatedSurvey.Web.Tests\bin\Debug\AutomatedSurvey.Web.Tests.dll
+      run: .\packages\NUnit.ConsoleRunner.3.11.1\tools\nunit3-console AutomatedSurvey.Web.Test\bin\Debug\AutomatedSurvey.Web.Test.dll
