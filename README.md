@@ -16,17 +16,21 @@ This application requires [Visual Studio](https://www.visualstudio.com/) and SQL
 
 1. Clone the repository and `cd` into it.
 
-2. Open the solution file in Visual Studio.
-![Open the solution file](https://raw.github.com/TwilioDevEd/automated-survey-csharp/main/solution-file.png)
+1. Open the solution file in Visual Studio.
 
-3. Build the solution.
-![Build the solution](https://raw.github.com/TwilioDevEd/automated-survey-csharp/main/build-solution.png)
+    ![Open the solution file](https://raw.github.com/TwilioDevEd/automated-survey-csharp/main/solution-file.png)
 
-4. Run `Update-Database` to execute the migrations.
-*(Be sure to check that your database server name matches the one from the connection string on `Web.config`. For reference, default values where used upon SQLServer installation)*
-![Run Update-Database](https://raw.github.com/TwilioDevEd/automated-survey-csharp/main/update-database.png)
+1. Build the solution.
 
-Running the command `Update-Database` will run the migrations and run the `Seed` method, if you want to inspect this you can inspect SQL Server Object Explorer.
+    ![Build the solution](https://raw.github.com/TwilioDevEd/automated-survey-csharp/main/build-solution.png)
+
+1. Run `Update-Database` to execute the migrations.
+
+    *(Be sure to check that your database server name matches the one from the connection string on `Web.config`. For reference, default values where used upon SQLServer installation)*
+
+    ![Run Update-Database](https://raw.github.com/TwilioDevEd/automated-survey-csharp/main/update-database.png)
+
+    Running the command `Update-Database` will run the migrations and run the `Seed` method, if you want to inspect this you can inspect SQL Server Object Explorer.
 
 That's it!
 
