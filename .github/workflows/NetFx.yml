@@ -21,7 +21,7 @@ jobs:
       uses: NuGet/setup-nuget@v1
 
     - name: Restore NuGet Packages
-      run: nuget restore WarmTransfer.sln
+      run: nuget restore AutomatedSurvey.sln
 
     - name: Build Web App
       run: msbuild AutomatedSurvey.sln /verbosity:minimal
