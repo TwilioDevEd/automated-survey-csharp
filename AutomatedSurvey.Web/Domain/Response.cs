@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AutomatedSurvey.Web.Models;
 using Twilio.TwiML;
 
@@ -46,11 +47,11 @@ namespace AutomatedSurvey.Web.Domain
             switch (questionType)
             {
                 case QuestionType.Voice:
-                    response.Record(action: GenerateUrl(_question));
+                    response.Record(action: new Uri(GenerateUrl(_question), UriKind.Relative));
                     break;
                 case QuestionType.Numeric:
                 case QuestionType.YesNo:
-                    response.Gather(action: GenerateUrl(_question));
+                    response.Gather(action: new Uri(GenerateUrl(_question), UriKind.Relative));
                     break;
             }
         }

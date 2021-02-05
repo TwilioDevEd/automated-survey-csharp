@@ -21,7 +21,7 @@ namespace AutomatedSurvey.Web.Test.Domain
                 "<Response>\r\n" +
                 "  <Say>{0}</Say>\r\n" +
                 "  <Say>{1}</Say>\r\n" +
-                "  <Record action=\"/answers/create?questionId={2}\" />\r\n" +
+                "  <Record action=\"/answers/create?questionId={2}\"></Record>\r\n" +
                 "</Response>", question.Body, Response.QuestionTypeToMessage[question.Type], question.Id);
 
             Assert.That(response.ToString(), Is.EqualTo(expectedResponse));
@@ -39,7 +39,7 @@ namespace AutomatedSurvey.Web.Test.Domain
                 "<Response>\r\n" +
                 "  <Say>{0}</Say>\r\n" +
                 "  <Say>{1}</Say>\r\n" +
-                "  <Gather action=\"/answers/create?questionId={2}\" />\r\n" +
+                "  <Gather action=\"/answers/create?questionId={2}\"></Gather>\r\n" +
                 "</Response>", question.Body, Response.QuestionTypeToMessage[question.Type], question.Id);
 
             Assert.That(response.ToString(), Is.EqualTo(expectedResponse));

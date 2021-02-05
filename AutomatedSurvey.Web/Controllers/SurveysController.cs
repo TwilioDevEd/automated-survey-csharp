@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using AutomatedSurvey.Web.Models;
 using AutomatedSurvey.Web.Models.Repository;
@@ -30,7 +31,8 @@ namespace AutomatedSurvey.Web.Controllers
             var welcomeMessage = string.Format("Thank you for taking the {0} survey", survey.Title);
 
             response.Say(welcomeMessage);
-            response.Redirect(Url.Action("find", "questions", new { id = 1 }));
+            var url = Url.Action("find", "questions", new { id = 1 });
+            response.Redirect(new Uri(url, UriKind.Relative));
 
             return TwiML(response);
         }

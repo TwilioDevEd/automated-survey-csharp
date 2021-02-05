@@ -4,7 +4,7 @@
 
 # Automated Surveys using ASP.NET MVC
 
-[![Build status](https://ci.appveyor.com/api/projects/status/7bxv1xa7f6pu3wui?svg=true)](https://ci.appveyor.com/project/TwilioDevEd/automated-survey-csharp)
+![](https://github.com/TwilioDevEd/automated-survey-csharp/workflows/NetFx/badge.svg)
 
 This application demonstrates how to use Twilio and TwiML to perform automated phone surveys.
 
@@ -12,20 +12,25 @@ This application demonstrates how to use Twilio and TwiML to perform automated p
 
 ## Running locally
 
-The application requirements are minimal, if you have installed [Visual Studio](https://www.visualstudio.com/) you're almost done.
+This application requires [Visual Studio](https://www.visualstudio.com/) and SQLServer Express 2019 with [LocalDB enabled](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb).
 
-1. Clone the repository and `cd' into it.
+1. Clone the repository and `cd` into it.
 
-2. Open the solution file in Visual Studio.
-![Open the solution file](https://raw.github.com/TwilioDevEd/automated-survey-csharp/master/solution-file.png)
+1. Open the solution file in Visual Studio.
 
-3. Build the solution.
-![Build the solution](https://raw.github.com/TwilioDevEd/automated-survey-csharp/master/build-solution.png)
+    ![Open the solution file](https://raw.github.com/TwilioDevEd/automated-survey-csharp/main/solution-file.png)
 
-4. Run `Update-Database` to execute the migrations.
-![Run Update-Database](https://raw.github.com/TwilioDevEd/automated-survey-csharp/master/update-database.png)
+1. Build the solution.
 
-Running the command `Update-Database` will run the migrations and run the `Seed` method, if you want to inspect this you can inspect SQL Server Object Explorer.
+    ![Build the solution](https://raw.github.com/TwilioDevEd/automated-survey-csharp/main/build-solution.png)
+
+1. Run `Update-Database` to execute the migrations.
+
+    *(Be sure to check that your database server name matches the one from the connection string on `Web.config`. For reference, default values where used upon SQLServer installation)*
+
+    ![Run Update-Database](https://raw.github.com/TwilioDevEd/automated-survey-csharp/main/update-database.png)
+
+    Running the command `Update-Database` will run the migrations and run the `Seed` method, if you want to inspect this you can inspect SQL Server Object Explorer.
 
 That's it!
 
@@ -46,12 +51,12 @@ ngrok http 1153 -host-header="localhost:1153"
 In order to receive incoming calls we need to first configure our [Twilio phone
 number](https://www.twilio.com/user/account/phone-numbers/incoming).
 
-![Configure Twilio Phone](https://raw.github.com/TwilioDevEd/automated-survey-csharp/master/configure-twilio-phone.png)
+![Configure Twilio Phone](https://raw.github.com/TwilioDevEd/automated-survey-csharp/main/configure-twilio-phone.png)
 
 Click on the red number, and then set the Voice Request URL. Don’t forget to
 save the changes.
 
-![Set Voice Request URL](https://raw.github.com/TwilioDevEd/automated-survey-csharp/master/set-voice-request-url.png)
+![Set Voice Request URL](https://raw.github.com/TwilioDevEd/automated-survey-csharp/main/set-voice-request-url.png)
 
 ## Meta
 
