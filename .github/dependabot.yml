@@ -1,0 +1,39 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/AutomatedSurvey.Web"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: Twilio
+    versions:
+    - 5.53.1
+  - dependency-name: JWT
+    versions:
+    - 7.3.1
+    - 8.0.0
+  - dependency-name: Twilio.AspNet.Mvc
+    versions:
+    - 5.37.2
+  - dependency-name: Microsoft.IdentityModel.Tokens
+    versions:
+    - 6.8.0
+  - dependency-name: Microsoft.IdentityModel.Logging
+    versions:
+    - 6.8.0
+  - dependency-name: EntityFramework
+    versions:
+    - 6.4.4
+  - dependency-name: Microsoft.AspNet.Mvc
+    versions:
+    - 5.2.7
+  - dependency-name: bootstrap
+    versions:
+    - 3.4.1
+  - dependency-name: Microsoft.AspNet.Razor
+    versions:
+    - 3.2.7
+  - dependency-name: WebGrease
+    versions:
+    - 1.6.0
